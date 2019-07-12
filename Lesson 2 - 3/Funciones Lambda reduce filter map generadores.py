@@ -48,6 +48,14 @@ result = reduce(lambda x, y: x + y, nums)
 print(result)
 
 
+# La funcion compresora es un tipo de construcción que consta de una expresión que determina 
+#cómo modificar los elementos de una lista, seguida de una o varias clausulas for y, opcionalmente, 
+#una o varias clausulas if
+
+cubos = [valor ** 3 for valor in lista]
+print('Cubos de 1 a 10:', cubos)
+
+
 
 
 #Los generadores son funciones que nos permitirán obtener sus resultados poco a poco. Es decir, 

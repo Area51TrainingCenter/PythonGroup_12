@@ -1,0 +1,13 @@
+#Ejercicios 
+
+Requerimiento
+
+Desarrollar un sistema que permita ingresar datos personales, propiedades y nivel de educación, utilizando clases y métodos con las características vistas en clase (clases y métodos abstractos encapsulamiento, __init__  __call__ ) inicializando de manera correcta atributos  e instanciando los tipos de datos válidos para cada ingreso, además considerar las condicionales y mensajes de error que pueden generar por parte del usuario.
+Considerar debe existir una lista donde se tenga los  años válidos de egreso
+Utilizar condicionales ternarias
+Utilizar compresores  
+Deben existir métodos con las mismas nomenclaturas en 2 de las 3 clases y que deben devolver cadenas con diferentes estructuras.
+Inicializar Clase e instanciar con variables
+Utilizar la redefinición de __truediv__ para reestructurar las cadenas de manera dinámica.
+Utilizar de manera correcta las declaraciones e indentaciones.
+Bonus utilizar y cargar información a través de un archivo txt
