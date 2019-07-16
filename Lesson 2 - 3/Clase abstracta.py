@@ -33,3 +33,5 @@ class AnotherSubclass(AbstractClassExample):
         
 x = AnotherSubclass()
 x.do_something()
+
+6NyKU9!ZAXZ!js-
