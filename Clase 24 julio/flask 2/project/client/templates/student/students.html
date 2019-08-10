@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for student in students %}
+    <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.city }}</td>
+        <td>{{ student.addr }}</td>
+        <td>{{ student.pin }}</td>
+    </tr>
+{% endfor %}
+
+</body>
+</html>
