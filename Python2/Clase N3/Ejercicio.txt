@@ -1,0 +1,15 @@
+Desarrollar los siguente
+
+	Modelos
+		Curso : Nombre, descripcion , credito
+
+		alumnos : nombre, edad, sexo, correo, descripcion
+				  imagen de perfil, cantidad de cursos a tomar { Inlines con fkey}
+
+		Universidad : nombre, descripcion, precio credito
+
+		Becas : alumno por fkey, % de descuento, total a pagar
+
+		Nota: El % de descuento debe ser generado de manera aleatorio al guardar un nuevo alumno, considerar la cantidad de creditos totales por alumno.
+
+		Recomendacion = generar campos que soporten null o blank ß
