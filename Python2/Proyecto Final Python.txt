@@ -1,0 +1,34 @@
+Proyecto Final Python
+
+Se solicita utilizar un framework Django o Flask con su gestor admin propio o creado
+que permita hacer lo siguiente.
+
+- Gestionar Libros, Clientes, Ventas, -- --  Información de libros()
+
+- Considerar que debe existir filas comunes en Fecha de creación, Fecha de Modificación y usuario que creó el registro 
+
+
+- Al momento de Guardar información de libros, a través de web scrapping recolectar información de wikipedia (Resumen) y almacenarla
+  utilizando la manipulación de objetos del framework en cuestión.
+
+- Cada Libro ingresado debe almacenar el precio en soles administrado por el admin y un precio en dolares(No real) con manipulación de objetos. El precio del dólar 
+  debe ser consumido por servicio utilizando el siguiente servicio.
+  	http://data.fixer.io/api/latest?access_key=ce2c726b45001ac3884d897bf7d6f035
+
+- Cada elemento agregado  a las ventas de libros debe tener métodos que realicen las siguientes acciones:
+	(Utilizar por lo menos una función de orden superior )
+	- Al precio ingresado en Libro calcular el 18% y almacenarla en una columna diferente no administrable desde el cms (Precios ingresados no tiene IGV)
+	- La cantidad de libros disponibles deben ser válida con el objeto Libros y actualizada.
+
+
+- El cliente registrado debe proporcionar una red social y validar que exista dicha url.(requests) si existe almacenar sino pedir url válida.
+
+- El Objeto Cliente debe tener un selector de identificador sexo, debe ser creado con un form.py.
+
+-- Se considera el uso adecuado de campos del framework
+
+-- Las últimas 5 ventas debe ser mostradas en el index de la web utilizando una función Template Tag
+
+
+#Nota : El uso de un template.html no es obligatorio, solo es necesario mostrar las etiquetas de carga de informacion
+≠≠≠
