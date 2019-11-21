@@ -1,0 +1,5 @@
+python manage.py runserver --settings=settings_staging
+
+python manage.py makemigrations --settings=settings_staging
+
+python manage.py migrate --settings=settings_staging
