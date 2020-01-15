@@ -1,0 +1,56 @@
+Reto clase 13
+	
+	El siguiente reto permite conocer el nivel de comprensión y capacidad de adaptabilidad sobre las lecciones anteriores.
+
+
+	Con el evento de los oscar's finalizados se creó la necesidad de informar a los ganadores la cantidad de votos obtenidos por cada una de las categorías y películas nominadas a los premios así como la necesidad de mantenerlos informados en cada actualización de las posiciones de sus nominaciones.
+
+	El problema se originó a que debido a una mala coordinación al contratar proveedores los cuales  utilizan las siguientes tecnologías.
+
+		1 . ) Flask - pony orm 
+		2 . ) Flask - Peewe orm
+		3 . ) Django - Django orm
+
+
+	por lo tanto, para el siguiente evento será necesario trabajar con estas tecnologías en paralelo para poder cumplir con el requerimiento
+
+	Los requerimientos iniciales son:
+		- Almacenar usuarios (Nombre apellido País) Pony
+			- Países como tabla relacionada Pony
+
+		- Categorías (nombre) Pewee
+
+		- Actores (nombre y apellido) Django orm
+		- Cantidad de votos de actor y categoría  Django orm
+			- Envio de correo por cada actualización del ranking 
+
+			-Log para guardar el ranking actual
+
+	- Crear servicios con las siguientes características:
+		* Crear Países
+		* Crear usuario nuevo  - Se le asigna país de manera aleatoria
+
+		* Crear categorías  
+		* Crear actores
+		* Agregar voto nuevo
+		
+		El flujo de trabajo es el siguiente:
+			° Para agregar un nuevo voto primero debemos recuperar lo siguiente
+					- usuarios
+					- película
+			° Ingresar al servicio agregar voto el usuario y voto, internamente se debe actualizar el registro de cada película y enviar el nuevo ranking de las películas según la categoría que se encuentre asociada a la película. Si el ranking actual sufre una actualización(ordenamiento por votos ) se debe enviar un correo a  " " para informar sobre la actualización.
+
+
+		API key: c7c60a4de3745b6423b0c2313c5394bd-6f4beb0a-3c8a291f
+
+		API base URL: https://api.mailgun.net/v3/sandbox25dd784c3cdd40f2af834826f2ae311d.mailgun.org
+
+		# Envio de correo
+		def send_simple_message():
+			return requests.post(
+				"https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages",
+				auth=("api", "YOUR_API_KEY"),
+				data={"from": "Excited User <mailgun@YOUR_DOMAIN_NAME>",
+					"to": ["bar@example.com", "YOU@YOUR_DOMAIN_NAME"],
+					"subject": "Hello",
+					"text": "Testing some Mailgun awesomness!"})
