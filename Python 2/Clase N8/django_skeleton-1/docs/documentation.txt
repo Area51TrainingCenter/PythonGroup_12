@@ -1,0 +1,4 @@
+Guardar aquí la documentación del proyecto:
+- ERS.
+- Modelado de Base de datos.
+- Etc.

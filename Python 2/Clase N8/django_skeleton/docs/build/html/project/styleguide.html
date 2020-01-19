@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Guía de estilo para el código del proyecto &mdash; documentación de Proyecto Django - 1.1</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="documentación de Proyecto Django - 1.1" href="../index.html" />
+    <link rel="next" title="Utilización de URLs Dinámicas" href="urls.html" />
+    <link rel="prev" title="Estructura" href="structure.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="guia-de-estilo-para-el-codigo-del-proyecto">
+<h1>Guía de estilo para el código del proyecto<a class="headerlink" href="#guia-de-estilo-para-el-codigo-del-proyecto" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>A continuación se detallan una serie de directivas para el estilo de escritura del código en este proyecto. Si bien estas no son de caracter obligatorio, se recomiendan para escribir código legible y de formato uniforme a lo largo de los proyectos que se irán realizando con el tiempo.</p>
+<div class="section" id="ancho-de-linea">
+<h2>Ancho de línea<a class="headerlink" href="#ancho-de-linea" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se utilizará un límite máximo de 80 caracteres para el código escrito de Python.</p>
+</div>
+<div class="section" id="nombre-de-clases-y-funciones">
+<h2>Nombre de clases y funciones<a class="headerlink" href="#nombre-de-clases-y-funciones" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se utilizará el estilo <code class="docutils literal"><span class="pre">snake_case</span></code> para los nombres de variables y funciones. Se usará <code class="docutils literal"><span class="pre">CamelCase</span></code> en cambio, para los nombres de clase. Si dos o más variables/métodos están relacionadas de alguna forma, se recomienda nombrarlas con un mismo prefijo. Adicionalmente, todo el código para los proyectos de la empresa debe estar escrito en el idioma inglés.</p>
+</div>
+<div class="section" id="saltos-de-linea">
+<h2>Saltos de línea<a class="headerlink" href="#saltos-de-linea" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se separarán métodos con salto de línea y clases con dos. Se pueden separar secciones de código con un salto de línea si esto aumenta su legibilidad.</p>
+<p>Ejemplo:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">another_funcion</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">another_result</span>
+
+
+<span class="k">class</span> <span class="nc">TestClass</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">another_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">result_extra</span> <span class="o">=</span> <span class="n">another_function</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result_extra</span>
+</pre></div>
+</div>
+<p>Si las líneas de código a escribir sobrepasaran necesariamente el límite de 80 caracteres, estas deben separarse considerando:</p>
+<ol class="arabic">
+<li><p class="first">Si se trata de una secuencia de elementos, la siguiente línea debe empezar donde empezó la definición de la secuencia.</p>
+<blockquote>
+<div><p>Ejemplo:</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span><span class="mi">9999999999</span><span class="p">,</span> <span class="mi">9999999999</span><span class="p">,</span> <span class="mi">9999999999</span><span class="p">,</span> <span class="mi">9999999999</span><span class="p">,</span> <span class="mi">9999999999</span><span class="p">,</span>
+            <span class="mi">9999999999</span><span class="p">,</span> <span class="mi">9999999999</span><span class="p">,</span> <span class="mi">9999999999</span><span class="p">,</span> <span class="mi">9999999999</span><span class="p">,</span> <span class="mi">9999999999</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p class="first">Si el inicio de la definición de la secuencia está muy cerca al límite de caracteres, puede iniciarse la definición de sus elementos en la línea siguiente, en un nivel de indentación superior al de la línea anterior y terminar la definición en una nueva línea.</p>
+<blockquote>
+<div><p>Ejemplo:</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">call_to_a_very_long_named_function_with_a_lot_of_params</span><span class="p">(</span>
+        <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">,</span> <span class="n">param3</span><span class="p">,</span> <span class="n">param4</span><span class="p">,</span> <span class="n">param5</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p class="first">Para llamadas a funciones encadenadas, puede separarse la línea utilizando el caracter <code class="docutils literal"><span class="pre">\</span></code> después del punto de la siguiente llamada.</p>
+<blockquote>
+<div><p>Ejemplo:</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">call</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">()</span><span class="o">.</span><span class="n">a</span><span class="p">()</span><span class="o">.</span><span class="n">very_long</span><span class="p">()</span><span class="o">.</span><span class="n">chain</span><span class="p">()</span><span class="o">.</span><span class="n">with_a</span><span class="p">()</span><span class="o">.</span><span class="n">lot</span><span class="p">()</span><span class="o">.</span>\
+        <span class="n">of_params</span><span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic" start="4">
+<li><p class="first">Para condicionales que tienen muchos componentes, se prefiere separar los componentes antes del operador lógico de conjunción e indentar la nueva linea dos niveles más allá respecto a la anterior.</p>
+<blockquote>
+<div><p>Ejemplo:</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">variable1</span> <span class="o">==</span> <span class="n">value1</span> <span class="ow">and</span> <span class="n">variable2</span> <span class="o">==</span> <span class="n">value2</span> <span class="ow">or</span> <span class="n">variable3</span> <span class="o">==</span> <span class="n">value3</span> \
+            <span class="ow">and</span> <span class="n">variable4</span> <span class="o">==</span> <span class="n">value4</span> <span class="ow">or</span> <span class="n">variable5</span> <span class="o">==</span> <span class="n">value5</span><span class="p">:</span>
+        <span class="k">return</span>
+</pre></div>
+</div>
+<ol class="arabic" start="5">
+<li><p class="first">Si una llamada a función tiene una cantidad de argumentos considerable o estos son lo suficientemente largos, se puede optar por poner cada argumento en una única línea.</p>
+<blockquote>
+<div><p>Ejemplo:</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">a_function_withlong_arguments</span><span class="p">(</span>
+        <span class="n">the_first_argument</span><span class="o">=</span><span class="n">the_first_value</span><span class="p">,</span>
+        <span class="n">the_second_argument</span><span class="o">=</span><span class="n">the_second_value</span><span class="p">,</span>
+        <span class="n">the_third_argument</span><span class="o">=</span><span class="n">the_third_value</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="diccionarios">
+<h2>Diccionarios<a class="headerlink" href="#diccionarios" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para definir diccionarios, se preferirá separar sus componentes en líneas independientes, a menos que se cuente con un elemento únicamente (o no se supere el límite de caracteres). Las llaves de los diccionarios definidos en una sola línea no deben estar rodeadas de espacios.</p>
+<blockquote>
+<div>Ejemplo:</div></blockquote>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">&#39;key&#39;</span><span class="p">:</span> <span class="s">&#39;value&#39;</span><span class="p">,</span>
+        <span class="s">&#39;key2&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;value2&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+        <span class="s">&#39;key3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="s">&#39;key4&#39;</span><span class="p">:</span> <span class="mi">4</span> <span class="o">**</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s">&#39;key5&#39;</span><span class="p">:</span> <span class="s">&#39;G&#39;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El orden sugerido de los imports es el siguiente:</p>
+<ol class="arabic simple">
+<li>Librería estándard de Python</li>
+<li>Librerías de terceros</li>
+<li>Módulos locales</li>
+</ol>
+<p>En cada nivel, los imports deben ordenarse alfabéticamente y los niveles de imports deben separarse con un salto de línea.</p>
+</div>
+<div class="section" id="modelos-y-formularios">
+<h2>Modelos y Formularios<a class="headerlink" href="#modelos-y-formularios" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se sugieren las siguientes reglas para la escritura de modelos y formualrios:</p>
+<ol class="arabic">
+<li><p class="first">Si la definición de las columnas del modelo es lo suficientemente larga, estas se deben escribir separadas con un salto de línea y con sus atributos separados por saltos de línea también.</p>
+<blockquote>
+<div><p>Ejemplo:</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">TestModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">column1</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SomeField</span><span class="p">(</span>
+        <span class="n">attr1</span><span class="o">=</span><span class="n">val1</span><span class="p">,</span>
+        <span class="n">attr2</span><span class="o">=</span><span class="n">val2</span><span class="p">,</span>
+        <span class="c"># ...</span>
+    <span class="p">)</span>
+
+    <span class="n">column2</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SomeField</span><span class="p">(</span>
+        <span class="n">attr1</span><span class="o">=</span><span class="n">val1</span><span class="p">,</span>
+        <span class="n">attr2</span><span class="o">=</span><span class="n">val2</span><span class="p">,</span>
+        <span class="c"># ...</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>El orden sugerido para los atributos de las columnas en los modelos es el siguiente:</li>
+</ol>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">max_length</span></code></li>
+<li><code class="docutils literal"><span class="pre">verbose_name</span></code></li>
+<li><code class="docutils literal"><span class="pre">choices</span></code></li>
+<li><code class="docutils literal"><span class="pre">(otros)</span></code></li>
+<li><code class="docutils literal"><span class="pre">validators</span></code></li>
+<li><code class="docutils literal"><span class="pre">blank</span></code></li>
+<li><code class="docutils literal"><span class="pre">null</span></code></li>
+</ul>
+</div>
+<div class="section" id="clases">
+<h2>Clases<a class="headerlink" href="#clases" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Al momento de escribir clases se deben considerar las siguientes sugerencias:</p>
+<ol class="arabic simple">
+<li>El orden de declaración de los componentes de la clase debe ser el siguiente:</li>
+</ol>
+<ul>
+<li><p class="first">Miembros de clase</p>
+</li>
+<li><p class="first">Método <code class="docutils literal"><span class="pre">__new__</span></code></p>
+</li>
+<li><p class="first">Método <code class="docutils literal"><span class="pre">__init__</span></code></p>
+</li>
+<li><p class="first">Propiedades</p>
+</li>
+<li><p class="first">Métodos de clase</p>
+</li>
+<li><p class="first">Métodos estáticos</p>
+</li>
+<li><dl class="first docutils">
+<dt>Métodos de instancia</dt>
+<dd><ul class="first last simple">
+<li>Métodos personalizados</li>
+<li>Métodos de clases superiores</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Otros métodos mágicos</p>
+</li>
+<li><p class="first">Clases de configuración (<code class="docutils literal"><span class="pre">Meta</span></code>)</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">Estructura</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Guía de estilo para el código del proyecto</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ancho-de-linea">Ancho de línea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nombre-de-clases-y-funciones">Nombre de clases y funciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#saltos-de-linea">Saltos de línea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diccionarios">Diccionarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#imports">Imports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modelos-y-formularios">Modelos y Formularios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clases">Clases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">Utilización de URLs Dinámicas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/index.html">Módulos comunes: common</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="structure.html" title="capítulo anterior">Estructura</a></li>
+      <li>Next: <a href="urls.html" title="próximo capítulo">Utilización de URLs Dinámicas</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/project/styleguide.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Introduzca los términos de búsqueda o un nombre de módulo, clase o función.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Wunderman Phantasia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.2+</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/project/styleguide.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

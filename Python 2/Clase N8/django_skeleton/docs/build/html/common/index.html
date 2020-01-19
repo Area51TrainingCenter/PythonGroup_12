@@ -1,0 +1,831 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Módulos comunes: common &mdash; documentación de Proyecto Django - 1.1</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="documentación de Proyecto Django - 1.1" href="../index.html" />
+    <link rel="prev" title="Utilización de URLs Dinámicas" href="../project/urls.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="modulos-comunes-common">
+<h1>Módulos comunes: common<a class="headerlink" href="#modulos-comunes-common" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>El módulo <code class="docutils literal"><span class="pre">common</span></code> contiene funciones y clases de uso común a la mayoría de
+los proyectos.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#module-common.badwords" title="common.badwords"><code class="xref py py-obj docutils literal"><span class="pre">common.badwords</span></code></a></td>
+<td>Validador de palabras restringidas</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#module-common.context_processors" title="common.context_processors"><code class="xref py py-obj docutils literal"><span class="pre">common.context_processors</span></code></a></td>
+<td>Procesadores de contexto</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#module-common.datastructures" title="common.datastructures"><code class="xref py py-obj docutils literal"><span class="pre">common.datastructures</span></code></a></td>
+<td>Estructuras de Datos</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#module-common.decorators" title="common.decorators"><code class="xref py py-obj docutils literal"><span class="pre">common.decorators</span></code></a></td>
+<td>Decoradores</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#module-common.facebook" title="common.facebook"><code class="xref py py-obj docutils literal"><span class="pre">common.facebook</span></code></a></td>
+<td>Utilidades de Facebook</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#module-common.functional" title="common.functional"><code class="xref py py-obj docutils literal"><span class="pre">common.functional</span></code></a></td>
+<td>Utilidades de naturaleza funcional</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#module-common.middleware" title="common.middleware"><code class="xref py py-obj docutils literal"><span class="pre">common.middleware</span></code></a></td>
+<td>Middewares comunes</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#module-common.models" title="common.models"><code class="xref py py-obj docutils literal"><span class="pre">common.models</span></code></a></td>
+<td>Utilidades para Modelos</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#module-common.sabmiller" title="common.sabmiller"><code class="xref py py-obj docutils literal"><span class="pre">common.sabmiller</span></code></a></td>
+<td>Utilidades y funciones de SABMiller</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#module-common.sms" title="common.sms"><code class="xref py py-obj docutils literal"><span class="pre">common.sms</span></code></a></td>
+<td>Envío de SMS</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#module-common.ubigeo" title="common.ubigeo"><code class="xref py py-obj docutils literal"><span class="pre">common.ubigeo</span></code></a></td>
+<td>Ubigeo</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#module-common.utils" title="common.utils"><code class="xref py py-obj docutils literal"><span class="pre">common.utils</span></code></a></td>
+<td>Utilidades Varias</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#module-common.validators" title="common.validators"><code class="xref py py-obj docutils literal"><span class="pre">common.validators</span></code></a></td>
+<td>Validadores de entrada</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#module-common.views" title="common.views"><code class="xref py py-obj docutils literal"><span class="pre">common.views</span></code></a></td>
+<td>Vistas comunes</td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-common.badwords"></span><div class="section" id="validador-de-palabras-restringidas">
+<h2>Validador de palabras restringidas<a class="headerlink" href="#validador-de-palabras-restringidas" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Este módulo permite incluir una lista de palabras restringidas persistente en
+base de datos e incluye una función para validar cualquier cadena de texto
+contra esta lista.</p>
+<p>Para instalarlo, añadirlo en <code class="docutils literal"><span class="pre">INSTALLED_APPS</span></code>:</p>
+<blockquote>
+<div><div class="code python highlight-python"><div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># ...</span>
+    <span class="s">&#39;common.badwords&#39;</span><span class="p">,</span>
+    <span class="c"># ...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Y efectuar un <code class="docutils literal"><span class="pre">migrate</span></code>:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>python settings/manage.py migrate badwords
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Este módulo no cuenta con datos iniciales y por tanto deben ser
+insertados manualmente en la tabla <code class="docutils literal"><span class="pre">badwords_badword</span></code>.</p>
+</div>
+<span class="target" id="module-common.badwords.models"></span><dl class="class">
+<dt id="common.badwords.models.BadWord">
+<em class="property">class </em><code class="descclassname">common.badwords.models.</code><code class="descname">BadWord</code><a class="headerlink" href="#common.badwords.models.BadWord" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Modelo simple que representa a una palabra a filtrar.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>word</strong> (<em>CharField</em>) &#8211; Palabra a filtrar.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="module-common.badwords.validators"></span><dl class="function">
+<dt id="common.badwords.validators.is_bad_word">
+<code class="descclassname">common.badwords.validators.</code><code class="descname">is_bad_word</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#common.badwords.validators.is_bad_word" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función para determinar la validez de un texto contra la lista de palabras
+existentes en la base de datos.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>text</strong> (<em>str o unicode</em>) &#8211; La cadena que se validará.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">Un booleano representando la validez del texto.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Tipo del valor devuelto:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.context_processors"></span><div class="section" id="procesadores-de-contexto">
+<h2>Procesadores de contexto<a class="headerlink" href="#procesadores-de-contexto" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="function">
+<dt id="common.context_processors.common">
+<code class="descclassname">common.context_processors.</code><code class="descname">common</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#common.context_processors.common" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Context processor común. Agrega un número de constantes de los settings de
+django al contexto de todas las plantillas a renderizarse.</p>
+<dl class="docutils">
+<dt>Actualmente añade las siguientes contantes:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">BASE_URL</span></code></li>
+<li><code class="docutils literal"><span class="pre">FACEBOOK_ID</span></code></li>
+<li><code class="docutils literal"><span class="pre">CAMPAIGN_ID</span></code></li>
+</ul>
+</dd>
+</dl>
+<p>No debe utilizarse directamente, sino agregarse a la variable
+<code class="docutils literal"><span class="pre">context_processors</span></code> como parte de la constante <code class="docutils literal"><span class="pre">TEMPLATES</span></code> del settings.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.datastructures"></span><div class="section" id="estructuras-de-datos">
+<h2>Estructuras de Datos<a class="headerlink" href="#estructuras-de-datos" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="common.datastructures.Enumeration">
+<em class="property">class </em><code class="descclassname">common.datastructures.</code><code class="descname">Enumeration</code><span class="sig-paren">(</span><em>enum_list</em><span class="sig-paren">)</span><a class="headerlink" href="#common.datastructures.Enumeration" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Una clase de ayuda que provee <cite>choices</cite> más entendibles para los fields de
+Django. Puede utilizarse una instancia de esta clase directamente como
+<code class="docutils literal"><span class="pre">choices</span></code> al momento de definir algún field.</p>
+<p>Ejemplo:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">DOCUMENT_TYPE</span> <span class="o">=</span> <span class="n">Enumeration</span><span class="p">([</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;DNI&#39;</span><span class="p">,</span> <span class="s">&#39;Documento Nacional de Identidad&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;PASSPORT&#39;</span><span class="p">,</span> <span class="s">&#39;Pasaporte&#39;</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="k">assert</span> <span class="n">MY_ENUM</span><span class="o">.</span><span class="n">DNI</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">MY_ENUM</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;Pasaporte&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>Tomado de http://djangosnippets.org/snippets/1647/</cite></p>
+<p><cite>Autor: Dmitri Patrakov &lt;traditio&#64;gmail.com&gt;</cite></p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.decorators"></span><div class="section" id="decoradores">
+<h2>Decoradores<a class="headerlink" href="#decoradores" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="function">
+<dt id="common.decorators.p3p_policy">
+<code class="descclassname">common.decorators.</code><code class="descname">p3p_policy</code><span class="sig-paren">(</span><em>view_function</em><span class="sig-paren">)</span><a class="headerlink" href="#common.decorators.p3p_policy" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Decorador de views para agregar cabeceras de P3P. Especialmente útil cuando
+se tiene funcionalidad que se comporta de manera anómala bajo Internet
+Explorer en caso se tenga  el sitio embebido en un <cite>iframe</cite>.</p>
+<p>Para usarlo, sólo hace falta agregarlo como un decorador de la vista:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># urls.py</span>
+<span class="n">url</span><span class="p">(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="n">p3p_policy</span><span class="p">(</span><span class="n">views</span><span class="o">.</span><span class="n">Home</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;home&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.facebook"></span><div class="section" id="utilidades-de-facebook">
+<h2>Utilidades de Facebook<a class="headerlink" href="#utilidades-de-facebook" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="common.facebook.FacebookContextMixin">
+<em class="property">class </em><code class="descclassname">common.facebook.</code><code class="descname">FacebookContextMixin</code><a class="headerlink" href="#common.facebook.FacebookContextMixin" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Mixin de datos de Facebook.</p>
+<p>Un mixin de contexto para todos los TemplateViews y derivados que deseen
+incluir algunas variables de los settings en el contexto. Este mixin puede
+ser (y debería) sustituido por el common context processor del módulo
+<code class="docutils literal"><span class="pre">context-processors</span></code>.</p>
+<dl class="docutils">
+<dt>Las variables que se incluyen en el contexto al usar este mixin son:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">base_url</span></code> tiene el valor de <code class="docutils literal"><span class="pre">ROOT_URL</span></code></li>
+<li><code class="docutils literal"><span class="pre">app_id</span></code> tiene el valor de <code class="docutils literal"><span class="pre">FACEBOOK_APP_ID</span></code></li>
+<li><code class="docutils literal"><span class="pre">scope</span></code> tienee el valor de <code class="docutils literal"><span class="pre">FACEBOOK_SCOPE</span></code></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="common.facebook.FacebookProtectionMixin">
+<em class="property">class </em><code class="descclassname">common.facebook.</code><code class="descname">FacebookProtectionMixin</code><a class="headerlink" href="#common.facebook.FacebookProtectionMixin" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Mixin de protección de Views para Facebook.</p>
+<p>Este mixin revisa la existencia de una sesión activa en Facebook en la
+vista comprobando la existencia de un signed request. Útil para cuando se
+tenga una vista que sólo debe de ser visitada desde un canvas de Facebook.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="common.facebook.get_signed_request">
+<code class="descclassname">common.facebook.</code><code class="descname">get_signed_request</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#common.facebook.get_signed_request" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función utilitaria que descifra y recoge el request firmado que Facebook
+entrega en algunos escenarios.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Requiere la instalación del módulo` <code class="docutils literal"><span class="pre">django_facebook</span></code>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>request</strong> &#8211; Una instancia de <code class="docutils literal"><span class="pre">django.request</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">TODO</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.functional"></span><div class="section" id="utilidades-de-naturaleza-funcional">
+<h2>Utilidades de naturaleza funcional<a class="headerlink" href="#utilidades-de-naturaleza-funcional" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="function">
+<dt id="common.functional.property_lazy">
+<code class="descclassname">common.functional.</code><code class="descname">property_lazy</code><span class="sig-paren">(</span><em>fn</em><span class="sig-paren">)</span><a class="headerlink" href="#common.functional.property_lazy" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Utilidad de decoración de propiedades de clase como perezosas.</p>
+<p>Ejemplo:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">common.functional</span> <span class="kn">import</span> <span class="n">property_lazy</span>
+
+<span class="k">class</span> <span class="nc">Test</span><span class="p">:</span>
+    <span class="nd">@property_lazy</span>
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">something</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>fn</strong> (<em>function</em>) &#8211; Función a decorar.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">Función decorada como perezosa.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.middleware"></span><div class="section" id="middewares-comunes">
+<h2>Middewares comunes<a class="headerlink" href="#middewares-comunes" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="common.middleware.IEDetectionMiddleware">
+<em class="property">class </em><code class="descclassname">common.middleware.</code><code class="descname">IEDetectionMiddleware</code><a class="headerlink" href="#common.middleware.IEDetectionMiddleware" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Middleware para detectar versiones anteriores de Internet Explorer y
+redireccionar al usuario hacia browsehappy.com.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.models"></span><div class="section" id="utilidades-para-modelos">
+<h2>Utilidades para Modelos<a class="headerlink" href="#utilidades-para-modelos" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="common.models.FakeCharField">
+<em class="property">class </em><code class="descclassname">common.models.</code><code class="descname">FakeCharField</code><a class="headerlink" href="#common.models.FakeCharField" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Clase que finge ser un CharField sin tener efecto en la base de datos. Se
+puede utilizar para tareas que requieran simular la existencia de un campo
+temporal sin afectar el modelo de datos original.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="common.models.file_rename">
+<em class="property">class </em><code class="descclassname">common.models.</code><code class="descname">file_rename</code><span class="sig-paren">(</span><em>folder=''</em>, <em>prefix=None</em><span class="sig-paren">)</span><a class="headerlink" href="#common.models.file_rename" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Esta clase puede usarse en la definición de un FileField (o similares)
+para renombrar los archivos subidos con un uuid4 y un prefijo opcional.</p>
+<p>Para usarlo, sólo usa la función en el argumento <code class="docutils literal"><span class="pre">upload_to</span></code> de tu
+FileField:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="c"># models.py</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FileField</span><span class="p">(</span>
+    <span class="n">upload_to</span><span class="o">=</span><span class="n">file_rename</span><span class="p">(</span><span class="s">&#39;images&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="common.models.file_rename.deconstruct">
+<code class="descname">deconstruct</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#common.models.file_rename.deconstruct" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Returns a 3-tuple of class import path, positional arguments,
+and keyword arguments.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.sabmiller"></span><div class="section" id="utilidades-y-funciones-de-sabmiller">
+<h2>Utilidades y funciones de SABMiller<a class="headerlink" href="#utilidades-y-funciones-de-sabmiller" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Un conjunto de clases, vistas y funciones útiles para interactuar con los
+servicios de SABMiller/SiteFactory.</p>
+<p>Para instalarlo, añadirlo en <code class="docutils literal"><span class="pre">INSTALLED_APPS</span></code>:</p>
+<blockquote>
+<div><div class="code python highlight-python"><div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># ...</span>
+    <span class="s">&#39;common.sabmiller&#39;</span><span class="p">,</span>
+    <span class="c"># ...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Se deben definir las siguientes constantes en el archivo de configuración (los
+valores de estas son suministrados por SiteFactory):</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">SABMILLER_API_USER</span></code></li>
+<li><code class="docutils literal"><span class="pre">SABMILLER_API_TOKEN</span></code></li>
+<li><code class="docutils literal"><span class="pre">SABMILLER_SERVICE_URL</span></code></li>
+<li><code class="docutils literal"><span class="pre">SABMILLER_CAMPAIGN</span></code></li>
+<li><code class="docutils literal"><span class="pre">SABMILLER_BRAND</span></code></li>
+<li><code class="docutils literal"><span class="pre">SABMILLER_FORMID</span></code></li>
+</ul>
+</div></blockquote>
+<p>Esta aplicación incluye dos vistas para realizar la validación y registro de
+usuarios, sus urls se pueden agregar al archivo <code class="docutils literal"><span class="pre">urls.py</span></code> general:</p>
+<blockquote>
+<div><div class="code python highlight-python"><div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c"># ...</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^sabmiller/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;common.sabmiller.urls&#39;</span><span class="p">)),</span>
+    <span class="c"># ...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<span class="target" id="module-common.sabmiller.forms"></span><div class="section" id="formularios-de-validacion-y-registro-de-usuarios">
+<h3>Formularios de validación y registro de usuarios<a class="headerlink" href="#formularios-de-validacion-y-registro-de-usuarios" title="Enlazar permanentemente con este título">¶</a></h3>
+<dl class="class">
+<dt id="common.sabmiller.forms.SABMillerUserRegistrationForm">
+<em class="property">class </em><code class="descclassname">common.sabmiller.forms.</code><code class="descname">SABMillerUserRegistrationForm</code><a class="headerlink" href="#common.sabmiller.forms.SABMillerUserRegistrationForm" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Formulario de registro de usurarios de SABMiller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>CharField</em>) &#8211; Nombres del usuario. Máximo 35 caracteres. Obligatorio.</li>
+<li><strong>last_name</strong> (<em>CharField</em>) &#8211; Apellidos del usuario. Máximo 80 caracteres. Obligatorio.</li>
+<li><strong>document</strong> (<em>CharField</em>) &#8211; DNI del usuario. Máximo 8 caracteres. Obligatorio.</li>
+<li><strong>birthday</strong> (<em>DateField</em>) &#8211; Fecha de nacimiento del usuario. Formato YYYY-MM-DD. Obligatorio.</li>
+<li><strong>gender</strong> (<em>CharField</em>) &#8211; Género del usuario. Opciones: &#8216;Masculino&#8217; o &#8216;Femenino&#8217;. Obligatorio.</li>
+<li><strong>state</strong> (<em>CharField</em>) &#8211; Departamento del usuario. Máximo 50 caracteres. Obligatorio.</li>
+<li><strong>city</strong> (<em>CharField</em>) &#8211; Provincia del usuario. Máximo 50 caracteres. Obligatorio.</li>
+<li><strong>email</strong> (<em>EmailField</em>) &#8211; Email del usuario. Obligatorio.</li>
+<li><strong>phone</strong> (<em>CharField</em>) &#8211; Teléfomo del usuario. Máximo 9 caracteres. Opcional.</li>
+<li><strong>twitter</strong> (<em>CharField</em>) &#8211; Handle de Twitter del usuario. Máximo 255 caracteres. Opcional.</li>
+<li><strong>optin</strong> (<em>IntegerField</em>) &#8211; Optin del usuario. Opciones: 1 o 0. Obligatorio.</li>
+<li><strong>terms</strong> (<em>IntegerField</em>) &#8211; Aceptación de términos. Opciones: 1 o 0. Obligatorio.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="common.sabmiller.forms.SABMillerUserValidationForm">
+<em class="property">class </em><code class="descclassname">common.sabmiller.forms.</code><code class="descname">SABMillerUserValidationForm</code><a class="headerlink" href="#common.sabmiller.forms.SABMillerUserValidationForm" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Formulario de validación de usurarios de SABMiller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
+<li><strong>document</strong> (<em>CharField</em>) &#8211; DNI con máximo de 8 caracteres.</li>
+<li><strong>birthday</strong> (<em>DateField</em>) &#8211; Fecha de nacimiento en formato YYY-MM-DD.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="common.sabmiller.forms.SABMillerUserValidationForm.clean_birthday">
+<code class="descname">clean_birthday</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#common.sabmiller.forms.SABMillerUserValidationForm.clean_birthday" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función de validación de la fecha de nacimiento. Lanza una excepción
+del tipo <code class="docutils literal"><span class="pre">ValidationError</span></code> cuando la fecha tiene una distancia menor
+a 18 años respecto a la actual.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<span class="target" id="module-common.sms"></span><div class="section" id="envio-de-sms">
+<h2>Envío de SMS<a class="headerlink" href="#envio-de-sms" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="common.sms.SMS">
+<em class="property">class </em><code class="descclassname">common.sms.</code><code class="descname">SMS</code><a class="headerlink" href="#common.sms.SMS" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Clase utilitaria para envío de SMS a través de la plataforma de Tedexis,
+que tiene un servicio SOAP para este propósito.</p>
+<dl class="docutils">
+<dt>Requiere la presencia de las siguientes constantes en los settings:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">SOAP_URI</span></code> la URL al servicio de envío</li>
+<li><code class="docutils literal"><span class="pre">SOAP_TEXT</span></code> el texto por defecto a enviar cuando se use <code class="docutils literal"><span class="pre">send()</span></code></li>
+<li><code class="docutils literal"><span class="pre">SOAP_PASSPORT</span></code> <cite>pasaporte</cite> de identificación suministrado por Tedexis.</li>
+<li><code class="docutils literal"><span class="pre">SOAP_PASSWORD</span></code> contraseña del servicio suministrada por Tedexis.</li>
+</ul>
+</dd>
+</dl>
+<p>Uso:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">sms</span> <span class="o">=</span> <span class="n">SMS</span><span class="p">()</span>
+<span class="n">sms</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&#39;987654321&#39;</span><span class="p">,</span> <span class="s">&#39;hola!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.ubigeo"></span><div class="section" id="ubigeo">
+<h2>Ubigeo<a class="headerlink" href="#ubigeo" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Modelos y vistas útiles para manejar las divisiones políticas del Perú.</p>
+<p>Para instalarlo, añadirlo en <code class="docutils literal"><span class="pre">INSTALLED_APPS</span></code>:</p>
+<blockquote>
+<div><div class="code python highlight-python"><div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># ...</span>
+    <span class="s">&#39;common.ubigeo&#39;</span><span class="p">,</span>
+    <span class="c"># ...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Y efectuar un <code class="docutils literal"><span class="pre">migrate</span></code>. Esto cargará en la tabla <code class="docutils literal"><span class="pre">ubigeo_ubigeo</span></code> una lista
+completa de ubigeos:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>python settings/manage.py migrate ubigeo
+</pre></div>
+</div>
+</div></blockquote>
+<p>Esta aplicación incluye una vista de consulta de ubigeos, cuya url se puede
+agregar al archivo <code class="docutils literal"><span class="pre">urls.py</span></code> general:</p>
+<blockquote>
+<div><div class="code python highlight-python"><div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c"># ...</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^ubigeo/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;common.ubigeo.urls&#39;</span><span class="p">)),</span>
+    <span class="c"># ...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<span class="target" id="module-common.ubigeo.models"></span><dl class="class">
+<dt id="common.ubigeo.models.Ubigeo">
+<em class="property">class </em><code class="descclassname">common.ubigeo.models.</code><code class="descname">Ubigeo</code><a class="headerlink" href="#common.ubigeo.models.Ubigeo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Modelo que representa una división geográfica peruana.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>CharField</em>) &#8211; Nombre de la división.</li>
+<li><strong>parent</strong> (<em>ForeignKey(Ubigeo)</em>) &#8211; División de orden superior.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="module-common.ubigeo.views"></span><div class="section" id="vistas-de-consulta-de-ubigeos">
+<h3>Vistas de consulta de Ubigeos<a class="headerlink" href="#vistas-de-consulta-de-ubigeos" title="Enlazar permanentemente con este título">¶</a></h3>
+<dl class="class">
+<dt id="common.ubigeo.views.UbigeoView">
+<em class="property">class </em><code class="descclassname">common.ubigeo.views.</code><code class="descname">UbigeoView</code><span class="sig-paren">(</span><em>JSONView</em><span class="sig-paren">)</span><a class="headerlink" href="#common.ubigeo.views.UbigeoView" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vista para consultar la lista de ubigeos en función a un nivel superior
+dado. Tiene una URL definida como <code class="docutils literal"><span class="pre">/</span></code> en <code class="xref py py-mod docutils literal"><span class="pre">common.ubigeo.urls</span></code> y
+recibe mediante GET el id del Ubigeo a usar como filtro de orden superior
+(parámetro de nombre <code class="docutils literal"><span class="pre">parent</span></code>). Si no se suministra, se obtendrán todos
+los ubigeos de primer orden (Departamentos).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Devuelve:</th><td class="field-body">JSON con el formato <code class="docutils literal"><span class="pre">[{&quot;id&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;&quot;},</span> <span class="pre">...]</span></code></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Tipo del valor devuelto:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">JSON</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<span class="target" id="module-common.utils"></span><div class="section" id="utilidades-varias">
+<h2>Utilidades Varias<a class="headerlink" href="#utilidades-varias" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="common.utils.ExcelResponse">
+<em class="property">class </em><code class="descclassname">common.utils.</code><code class="descname">ExcelResponse</code><span class="sig-paren">(</span><em>HttpResponse</em><span class="sig-paren">)</span><a class="headerlink" href="#common.utils.ExcelResponse" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Clase de generación de archivos .xlsx</p>
+<p>Ejemplo:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Report</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ExcelResponse</span><span class="p">(</span>
+            <span class="p">[(</span><span class="s">&#39;A1&#39;</span><span class="p">,</span> <span class="s">&#39;B1&#39;</span><span class="p">,</span> <span class="s">&#39;C1&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;A2&#39;</span><span class="p">,</span> <span class="s">&#39;B2&#39;</span><span class="p">,</span> <span class="s">&#39;C2&#39;</span><span class="p">)],</span>
+            <span class="s">&#39;report&#39;</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Requiere la instalación del módulo <code class="docutils literal"><span class="pre">openpyxl</span></code>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> &#8211; Celdas que contendrá el archivo.</li>
+<li><strong>output_name</strong> &#8211; Nombre del archivo a generar. La extensión se agrega automáticamente.</li>
+<li><strong>headers</strong> &#8211; Lista de cabeceras para el archivo. Opcional.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="common.utils.Numbers">
+<em class="property">class </em><code class="descclassname">common.utils.</code><code class="descname">Numbers</code><a class="headerlink" href="#common.utils.Numbers" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Clase de utilidades para trabajar con datos de tipo numérico.</p>
+<dl class="staticmethod">
+<dt id="common.utils.Numbers.is_number">
+<em class="property">static </em><code class="descname">is_number</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#common.utils.Numbers.is_number" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Comprueba que un dato es del tipo numérico o contiene números.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>s</strong> &#8211; Dato que será comprobado.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><code class="docutils literal"><span class="pre">True</span></code> si <code class="docutils literal"><span class="pre">s</span></code> es numérico, <code class="docutils literal"><span class="pre">False</span></code> de otra forma.</td>
+</tr>
+</tbody>
+</table>
+<p>Uso:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="n">Numbers</span><span class="o">.</span><span class="n">is_number</span><span class="p">(</span><span class="s">&#39;123&#39;</span><span class="p">)</span>  <span class="c"># True</span>
+<span class="n">Numbers</span><span class="o">.</span><span class="n">is_number</span><span class="p">(</span><span class="s">&#39;uno&#39;</span><span class="p">)</span>  <span class="c"># False</span>
+<span class="n">Numbers</span><span class="o">.</span><span class="n">is_number</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>    <span class="c"># True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="common.utils.RandomUtil">
+<em class="property">class </em><code class="descclassname">common.utils.</code><code class="descname">RandomUtil</code><a class="headerlink" href="#common.utils.RandomUtil" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Clase de utilidades para trabajar con números aleatorios.</p>
+<dl class="staticmethod">
+<dt id="common.utils.RandomUtil.get_random_probability">
+<em class="property">static </em><code class="descname">get_random_probability</code><span class="sig-paren">(</span><em>option_probability_dict=None</em><span class="sig-paren">)</span><a class="headerlink" href="#common.utils.RandomUtil.get_random_probability" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>TODO: Llenar</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>option_probability_dict</strong> &#8211; To be implemented</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.validators"></span><div class="section" id="validadores-de-entrada">
+<h2>Validadores de entrada<a class="headerlink" href="#validadores-de-entrada" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="data">
+<dt id="common.validators.alphanumeric_validator">
+<code class="descclassname">common.validators.</code><code class="descname">alphanumeric_validator</code><em class="property"> = &lt;django.core.validators.RegexValidator object&gt;</em><a class="headerlink" href="#common.validators.alphanumeric_validator" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Valida la presencia de todos los caracteres imprimibles incluyendo aquellos
+usados en el idioma castellano.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="common.validators.dni_validator">
+<code class="descclassname">common.validators.</code><code class="descname">dni_validator</code><em class="property"> = &lt;django.core.validators.RegexValidator object&gt;</em><a class="headerlink" href="#common.validators.dni_validator" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Valida la presencia de 8 caracteres numéricos.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="common.validators.name_validator">
+<code class="descclassname">common.validators.</code><code class="descname">name_validator</code><em class="property"> = &lt;django.core.validators.RegexValidator object&gt;</em><a class="headerlink" href="#common.validators.name_validator" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Valida la presencia de caracteres alfabéticos y especiales adecuados para un
+nombre.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="common.validators.phone_validator">
+<code class="descclassname">common.validators.</code><code class="descname">phone_validator</code><em class="property"> = &lt;django.core.validators.RegexValidator object&gt;</em><a class="headerlink" href="#common.validators.phone_validator" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Valida la presencia de 7 a 14 caracteres numéricos con espacios y guiones
+(<code class="docutils literal"><span class="pre">-</span></code>).</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-common.views"></span><div class="section" id="vistas-comunes">
+<h2>Vistas comunes<a class="headerlink" href="#vistas-comunes" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="common.views.JSONFormView">
+<em class="property">class </em><code class="descclassname">common.views.</code><code class="descname">JSONFormView</code><span class="sig-paren">(</span><em>JSONView</em><span class="sig-paren">)</span><a class="headerlink" href="#common.views.JSONFormView" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vista para procesar formularios a través de AJAX mediante POST.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>form_class</strong> &#8211; Clase del formulario a utilizar para la validación.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="common.views.JSONFormView.form_valid">
+<code class="descname">form_valid</code><span class="sig-paren">(</span><em>form</em><span class="sig-paren">)</span><a class="headerlink" href="#common.views.JSONFormView.form_valid" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función que se usa para definir la respuesta de la vista cuando la
+validación del formulario es exitosa.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>form</strong> &#8211; La instancia del formulario validado.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">La respuesta que debe recibir el cliente, por defecto es <code class="docutils literal"><span class="pre">{'success':</span> <span class="pre">True}</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Tipo del valor devuelto:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">dict o list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="common.views.JSONMultiFormView">
+<em class="property">class </em><code class="descclassname">common.views.</code><code class="descname">JSONMultiFormView</code><span class="sig-paren">(</span><em>JSONView</em><span class="sig-paren">)</span><a class="headerlink" href="#common.views.JSONMultiFormView" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vista para procesar una lista de formularios a través de AJAX mediante POST.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>form_list</strong> &#8211; Lista de clases de los formularios a utilizar para la validación.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="common.views.JSONMultiFormView.form_valid">
+<code class="descname">form_valid</code><span class="sig-paren">(</span><em>forms</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#common.views.JSONMultiFormView.form_valid" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función que se usa para definir la respuesta de la vista cuando la
+validación de los formularios es exitosa.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>forms</strong> &#8211; Las instancias de los formularios validados.</li>
+<li><strong>data</strong> &#8211; Los datos inicialmente enviados a la vista.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first">La respuesta que debe recibir el cliente, por defecto es <code class="docutils literal"><span class="pre">{'success':</span> <span class="pre">True}</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Tipo del valor devuelto:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first last">dict o list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="common.views.JSONView">
+<em class="property">class </em><code class="descclassname">common.views.</code><code class="descname">JSONView</code><span class="sig-paren">(</span><em>View</em><span class="sig-paren">)</span><a class="headerlink" href="#common.views.JSONView" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Vista para el manejo de AJAX, funciona igual que
+<code class="xref py py-class docutils literal"><span class="pre">from</span> <span class="pre">django.views.generic.View</span></code> con la diferencia que los métodos a
+implementar deben contener además un parámetro nombrado <code class="docutils literal"><span class="pre">data</span></code> y devolver
+un objeto de tipo <code class="docutils literal"><span class="pre">list</span></code> o <code class="docutils literal"><span class="pre">dict</span></code> que será directamente convertido en
+JSON para responderse. Los requests que se hagan hacia esta vista deben
+contar con el <code class="docutils literal"><span class="pre">Content-Type</span></code> de <code class="docutils literal"><span class="pre">application/json</span></code>.</p>
+<p>Ejemplo:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">JSONTest</span><span class="p">(</span><span class="n">JSONView</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s">&#39;hello&#39;</span><span class="p">:</span> <span class="s">&#39;ajax&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../project/index.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project/install.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project/structure.html">Estructura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project/styleguide.html">Guía de estilo para el código del proyecto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project/urls.html">Utilización de URLs Dinámicas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Módulos comunes: common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#validador-de-palabras-restringidas">Validador de palabras restringidas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#procesadores-de-contexto">Procesadores de contexto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#estructuras-de-datos">Estructuras de Datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decoradores">Decoradores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilidades-de-facebook">Utilidades de Facebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilidades-de-naturaleza-funcional">Utilidades de naturaleza funcional</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#middewares-comunes">Middewares comunes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilidades-para-modelos">Utilidades para Modelos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utilidades-y-funciones-de-sabmiller">Utilidades y funciones de SABMiller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#formularios-de-validacion-y-registro-de-usuarios">Formularios de validación y registro de usuarios</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#envio-de-sms">Envío de SMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ubigeo">Ubigeo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vistas-de-consulta-de-ubigeos">Vistas de consulta de Ubigeos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utilidades-varias">Utilidades Varias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#validadores-de-entrada">Validadores de entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vistas-comunes">Vistas comunes</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../project/urls.html" title="capítulo anterior">Utilización de URLs Dinámicas</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/common/index.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Introduzca los términos de búsqueda o un nombre de módulo, clase o función.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Wunderman Phantasia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.2+</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/common/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,9 @@
+.idea
+.vagrant
+*.pyc
+media/*
+!media/.keep
+
+
+.DS_Store
+.tmp

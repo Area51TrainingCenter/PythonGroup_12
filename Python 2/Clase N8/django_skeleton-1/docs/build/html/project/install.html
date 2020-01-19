@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Instalación &mdash; documentación de Proyecto Django - 1.1</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="documentación de Proyecto Django - 1.1" href="../index.html" />
+    <link rel="next" title="Estructura" href="structure.html" />
+    <link rel="prev" title="Introducción" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="instalacion">
+<h1>Instalación<a class="headerlink" href="#instalacion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>El esqueleto de desarrollo requiere de las siguientes dependencias, cuya instalación varía en relación al sistema operativo.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Python</span> <span class="pre">&gt;</span> <span class="pre">2.7.10</span> <span class="pre">&amp;&amp;</span> <span class="pre">&lt;</span> <span class="pre">3.0</span> <span class="pre">(incluyendo</span> <span class="pre">cabeceras</span> <span class="pre">de</span> <span class="pre">desarrollo)</span></code></li>
+<li><code class="docutils literal"><span class="pre">pip</span> <span class="pre">+</span> <span class="pre">virtualenv</span> <span class="pre">(pip</span> <span class="pre">viene</span> <span class="pre">con</span> <span class="pre">Python</span> <span class="pre">en</span> <span class="pre">últimas</span> <span class="pre">versiones)</span></code></li>
+<li><code class="docutils literal"><span class="pre">virtualenvwrapper</span> <span class="pre">(opcional/recomendado)</span></code></li>
+<li><code class="docutils literal"><span class="pre">MySQL</span> <span class="pre">5.X</span> <span class="pre">(incluyendo</span> <span class="pre">cabeceras</span> <span class="pre">de</span> <span class="pre">desarrollo)</span></code></li>
+<li><code class="docutils literal"><span class="pre">gcc</span></code></li>
+<li><code class="docutils literal"><span class="pre">libpng</span></code></li>
+<li><code class="docutils literal"><span class="pre">libjpeg</span></code></li>
+<li><code class="docutils literal"><span class="pre">zlib</span></code></li>
+</ul>
+<ol class="arabic simple">
+<li>Una vez instaladas las dependencias, el repositorio perteneciente al esqueleto debe clonarse (si no se cuenta ya con una copia) usando git:</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre>&gt; git clone git@bitbucket.org:wunderman-phantasia/django_skeleton.git
+</pre></div>
+</div>
+<p><em>Nota: si se está trabajando con el</em> <code class="docutils literal"><span class="pre">project_skeleton</span></code> <em>este contiene el esqueleto de backend y no es necesario realizar este paso.</em></p>
+<ol class="arabic simple" start="2">
+<li>Activar el virtualenv del proyecto. En la mayoría de casos basta con tener un único virtualenv para todos los proyectos que se hagan con el presente skeleton ya que se asume que se usa la última versión estable de los paquetes necesarios y las dependencias adicionales propias del proyecto no tendrían que tener problemas entre sí.</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre># virtualenvwrapper: Para crear el virtualenv (nombrado &#39;env&#39;)
+&gt; mkvirtualenv env
+
+# virtualenvwrapper: Para volver a activarlo, o cambiar entre virtualenvs
+&gt; workon env
+
+# virtualenv: Para crear el virtualenv (nombrado &#39;env&#39;)
+&gt; virtualenv env
+
+# Para desactivar el virtualenv
+&gt; deactivate
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Instalar los paquetes requeridos por el proyecto en el virtualenv (es necesario activarlo primero). Los paquetes a instalar se encuentran definidos en el archivo <code class="docutils literal"><span class="pre">requirements.txt</span></code> ubicado en la raíz del esqueleto:</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre>&gt; pip install -r requirements.txt
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Lanzar el proyecto de prueba incluido en el esqueleto para verificar su correcto funcionamiento:</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre>&gt; python settings/manage.py runserver --settings=settings_development
+Performing system checks...
+
+System check identified no issues (0 silenced).
+Jan 01, 2016 - 00:00:00
+Django version 1.9.6, using settings &#39;settings_development&#39;
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introducción</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">Estructura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="styleguide.html">Guía de estilo para el código del proyecto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">Utilización de URLs Dinámicas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/index.html">Módulos comunes: common</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="capítulo anterior">Introducción</a></li>
+      <li>Next: <a href="structure.html" title="próximo capítulo">Estructura</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/project/install.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Introduzca los términos de búsqueda o un nombre de módulo, clase o función.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Wunderman Phantasia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.2+</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/project/install.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

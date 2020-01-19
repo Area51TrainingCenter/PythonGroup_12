@@ -1,0 +1,9 @@
+Guía de estilo para el código del proyecto
+==========================================
+
+A continuación se detallan una serie de directivas para el estilo de escritura del código en este proyecto. Si bien estas no son de caracter obligatorio, se recomiendan para escribir código legible y de formato uniforme a lo largo de los proyectos que se irán realizando con el tiempo.
+
+
+Ancho de línea
+--------------
+Tal y como se describe en el PEP8, se utilizará un límite máximo de 80 caracteres para el código escrito de Python.

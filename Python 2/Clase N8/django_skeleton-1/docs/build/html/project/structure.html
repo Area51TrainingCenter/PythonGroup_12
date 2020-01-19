@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Estructura &mdash; documentación de Proyecto Django - 1.1</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="documentación de Proyecto Django - 1.1" href="../index.html" />
+    <link rel="next" title="Guía de estilo para el código del proyecto" href="styleguide.html" />
+    <link rel="prev" title="Instalación" href="install.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="estructura">
+<h1>Estructura<a class="headerlink" href="#estructura" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>El esqueleto está distribuido de la siguiente manera:</p>
+<div class="highlight-python"><div class="highlight"><pre>.
+├── README.md
+├── apps
+|   ├── common
+|   │   ├── __init__.py
+|   │   ├── badwords
+|   │   ├── context_processors.py
+|   │   ├── datastructures.py
+|   │   ├── decorators.py
+|   │   ├── facebook.py
+|   │   ├── functional.py
+|   │   ├── middleware.py
+|   │   ├── models.py
+|   │   ├── sabmiller
+|   │   ├── sms.py
+|   │   ├── ubigeo
+|   │   ├── utils.py
+|   │   ├── validators.py
+|   │   └── views.py
+|   └── website
+|       ├── __init__.py
+|       ├── urls.py
+|       └── views.py
+├── db.sqlite3
+├── docs
+|   ├── Makefile
+|   ├── build
+|   │   ├── doctrees
+|   │   └── html
+|   ├── documentation.txt
+|   ├── make.bat
+|   └── source
+├── media
+├── requirements.txt
+├── settings
+│   ├── __init__.py
+│   ├── manage.py
+│   ├── settings.py
+│   ├── settings_development.py
+│   ├── settings_staging.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── wsgi_staging.py
+├── static
+│   ├── admin
+│   └── grappelli
+└── templates
+    └── index.html
+</pre></div>
+</div>
+<p>En donde:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">README.md</span></code> - Readme inicial del esqueleto.</li>
+<li><code class="docutils literal"><span class="pre">apps</span></code> - Carpeta contenedora de todas las aplicaciones del proyecto.</li>
+<li><code class="docutils literal"><span class="pre">apps/common</span></code> - Aplicación que contiene funcionalidad común a la mayoría de proyeyctos.</li>
+<li><code class="docutils literal"><span class="pre">apps/website</span></code> - Aplicación básica que contiene una única vista.</li>
+<li><code class="docutils literal"><span class="pre">db.sqlite3</span></code> - Base de datos en formato sqlite v3 usada principalmente para el desarrollo.</li>
+<li><code class="docutils literal"><span class="pre">docs</span></code> - Carpeta que contiene que contiene la documentación del esqueleto.</li>
+<li><code class="docutils literal"><span class="pre">docs/build/html</span></code> - Raíz de la documentación generada del proyecto.</li>
+<li><code class="docutils literal"><span class="pre">media</span></code> - Carpeta donde se ubicará todo el contenido estático generado por el proyecto.</li>
+<li><code class="docutils literal"><span class="pre">requirements.txt</span></code> - Archivo de definición de dependencias del entorno de ejecución del proyecto, se usa en conjunto con <code class="docutils literal"><span class="pre">pip</span></code> para la instalación de las dependencias.</li>
+<li><code class="docutils literal"><span class="pre">settings</span></code> - Carpeta que aloja todos los archivos de configuración del proyecto de django del esqueleto.</li>
+<li><code class="docutils literal"><span class="pre">settings/settings.py</span></code> - Archivo principal de configuración del proyecto, usado para todas las configuraciones que afectan al proyecto en general y aquellas específicas del entorno de producción.</li>
+<li><code class="docutils literal"><span class="pre">settings/settings_development.py</span></code> - Archivo de configuración para el entorno de desarrollo. Debe importar todas las configuraciones del archivo general y sobreescribir aquellas que sólo se usan en este entorno.</li>
+<li><code class="docutils literal"><span class="pre">settings/settings_staging.py</span></code> - Archivo de configuración para el entorno de staging. Debe importar todas las configuraciones del archivo general y sobreescribir aquellas que sólo se usan en este entorno.</li>
+<li><code class="docutils literal"><span class="pre">settings/wsgi.py</span></code> - Definición del adaptador WSGI del proyecto. Preparado específicamente para su uso en el entorno de producción.</li>
+<li><code class="docutils literal"><span class="pre">settings/wsgi_staging.py</span></code> - Definición del adaptador WSGI del proyecto. Preparado específicamente para su uso en el entorno de staging.</li>
+<li><code class="docutils literal"><span class="pre">static</span></code> - Carpeta que contiene todo el contenido estático usado por el proyecto.</li>
+<li><code class="docutils literal"><span class="pre">templates</span></code> - Carpeta que contiene todas las plantillas que usará el proyecto.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Instalación</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Estructura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="styleguide.html">Guía de estilo para el código del proyecto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">Utilización de URLs Dinámicas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/index.html">Módulos comunes: common</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="install.html" title="capítulo anterior">Instalación</a></li>
+      <li>Next: <a href="styleguide.html" title="próximo capítulo">Guía de estilo para el código del proyecto</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/project/structure.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Ir a" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Introduzca los términos de búsqueda o un nombre de módulo, clase o función.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Wunderman Phantasia.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.2+</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/project/structure.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

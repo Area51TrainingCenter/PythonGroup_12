@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Simple is Better Than Complex</title>
+  <style type="text/css">
+    body {
+      width: 800px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Django Celery Example</h1>
+
+
+  <h2>Generate Random Users</h2>
+  <form method="post">
+    {% csrf_token %}
+    <table>
+      {{ form }}
+    </table>
+    <button type="submit">Submit</button>
+  </form>
+  <hr>
+
+  {% if messages %}
+      {% for message in messages %}
+        <p style="color: green">{{ message }}</p>
+      {% endfor %}
+    <hr>
+  {% endif %}
+
+  {% block content %}
+  {% endblock %}
+
+</body>
+</html>
+
+      Raw  MarkDown  Code
