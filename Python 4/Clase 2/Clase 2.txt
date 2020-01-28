@@ -1,0 +1,131 @@
+boolean = True
+lista = []
+while boolean == True:
+    var = int(input('Ingresa un numero entero: '))
+    lista.append(var)
+
+    condicional = str(input("Seguir con el ingreso de informacion Si - No: "))
+    if len(lista) >= 2:
+        if condicional.lower() == 'no':
+            # break2
+            boolean = False
+lista.sort(reverse=True)
+print(
+    f'El mayor elemento es {lista[0]} y el segudno mayor elemento es {lista[1]}'
+)
+
+lista = []
+
+for _ in range(2):
+  palabra = str(input("Ingrese cadena de texto : "))
+  lista.append(palabra)
+
+# buscar = input("Palabra a brucar")
+count = 0
+"Hola Mundo"
+["hola", "Mundo"]
+for i in lista[0].split(" "):
+  if lista[1] == i:
+    count += 1
+
+print(count)
+
+
+##################################
+cadena1 = "Hola Mundo area51 python grupo 20"
+cadena2 = "area51 grupo 20"
+
+print(cadena1.count(cadena2))
+
+lista = []
+
+numero = int(input("Ingresar cantidad de palabras a solicitar : "))
+
+
+for _ in range(numero):
+  palabra = str(input("Ingrese palabra: "))
+  lista.append(palabra)
+
+# Ingresar una palabra
+buscar = str(input("Ingresar palabra a busar : "))
+
+remplazar = str(input("Ingrese palabra a para remplazar : "))
+
+print(f'La lista de palabras es : ´{lista}')
+# Ejer2
+print(f'La palabra {buscar} se repite {lista.count(buscar)}')
+
+dic = {
+  'Nombre': 'hola'
+}
+
+#lista = (lista.replace(buscar, remplazar))
+#Ejer3
+print(f' La palabra {buscar} sera remplazada por {remplazar}, la lista es {lista}')
+
+
+##################################
+
+
+numero = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+indice = int(input("Ingrese un indice: "))
+
+print(f'el numero recuperado es {numero[indice-1]}')
+
+###################################
+
+numero = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+lista = list(numero)
+
+lista.sort(reverse=True)
+
+print(f"El mayor numero es : {lista[0]} y el menor numero es {lista[len(lista)-1]}")
+
+dict
+
+
+import random
+
+random.
+
+dic = {}
+
+print(dic)
+
+dic['Nombre'] = "Hola"
+
+print(dic)
+
+dic = dict(Apellido= 'Mundo', Edad= 51)
+
+print(dic)
+
+dic = dict(zip((1,2,3),("a", "b", "c")))
+print(dic)
+
+print(dic.keys())
+print(dic.values())
+
+print(dic.pop(2))
+
+print(dic)
+
+price_list = {
+  'platano': 1.35,
+  'manzana': 0.80,
+  'Pera': 0.85,
+  'Naraja': 0.70
+}
+
+product = str(input("Ingrese un producto : "))
+
+amount = int(input("Ingrese Cantidad de kilos : "))
+
+try:
+  print(f"La cantidad final es {price_list[product] * amount}")
+except Exception as e:
+  print(e)
+  print("La llave no exite ")
+
+
