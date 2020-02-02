@@ -1,0 +1,14 @@
+Transaction.prototype.hideCuponField = function (){
+    let wtag = '.form-row.field-payment input[type="radio"][name="payment"]' ;
+    let winterval = 400;
+    let wtag_voucher_id = '.form-row.field-voucher_id';
+    let obj = django.jQuery('#id_voucher_id');
+    if( !/^(SELLER)$/.test($(`${wtag}:checked`).val()) ) {
+        $(`${wtag_voucher_id}`).fadeOut(winterval);
+        obj.prop('required',false);
+    }else{
+        $(`${wtag_voucher_id}`).fadeIn(winterval);
+         obj.prop('required',true);
+         django.jQuery("label[for=id_voucher_id]").addClass("required");
+    } ;
+};
