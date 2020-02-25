@@ -12,7 +12,7 @@ from project.server.user.forms import LoginForm, RegisterForm
 user_blueprint = Blueprint("user", __name__)
 
 
-@user_blueprint.route("/register", methods=["GET", "POST"])
+@user_blueprint.("/register", methods=["GET", "POST"])
 def register():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
