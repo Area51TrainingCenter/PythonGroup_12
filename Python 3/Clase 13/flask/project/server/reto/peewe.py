@@ -21,6 +21,7 @@ class BaseModel(Model):
 class Category(BaseModel):
     id = PrimaryKeyField(null=False)
     name = CharField(max_length=100)
+    uuid = UUIDField
 
     @property
     def serializer(self):
